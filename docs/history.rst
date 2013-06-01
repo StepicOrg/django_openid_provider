@@ -10,6 +10,7 @@ tip
   functions.
 * Added AX support, new OPENID_AX_DATA_CALLBACK callback.
 * Added Django 1.5 support.
+* Added Django 1.5 custom user model support.
 
 v0.4
 ----

@@ -12,10 +12,15 @@ def import_module_attr(path):
     package, module = path.rsplit('.', 1)
     return getattr(import_module(package), module)
 
+def get_username(u):
+    if hasattr(u, 'get_username'):
+        return u.get_username()
+    return u.username
+
 def get_default_sreg_data(request, orequest):
     return {
         'email': request.user.email,
-        'nickname': request.user.username,
+        'nickname': get_username(request.user),
         'fullname': request.user.get_full_name(),
     }
 
@@ -23,7 +28,7 @@ def get_default_ax_data(request, orequest):
     return {
         'http://axschema.org/contact/email': request.user.email,
         'http://axschema.org/namePerson': request.user.get_full_name(),
-        'http://axschema.org/namePerson/friendly': request.user.username,
+        'http://axschema.org/namePerson/friendly': get_username(request.user),
         'http://axschema.org/namePerson/first': request.user.first_name,
         'http://axschema.org/namePerson/last': request.user.last_name,
     }

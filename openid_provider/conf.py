@@ -17,3 +17,5 @@ AX_DATA_CALLBACK = getattr(settings, 'OPENID_PROVIDER_AX_DATA_CALLBACK',
                            'openid_provider.utils.get_default_ax_data')
 
 AX_EXTENSION = getattr(settings, 'OPENID_PROVIDER_AX_EXTENSION', False)
+
+AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
