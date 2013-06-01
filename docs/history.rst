@@ -9,6 +9,7 @@ tip
 * Added setting OPENID_SREG_DATA_CALLBACK setting for custom SREG callback
   functions.
 * Added AX support, new OPENID_AX_DATA_CALLBACK callback.
+* Added Django 1.5 support.
 
 v0.4
 ----
