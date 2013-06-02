@@ -11,6 +11,7 @@ tip
 * Added AX support, new OPENID_PROVIDER_AX_DATA_CALLBACK callback.
 * Added Django 1.5 support.
 * Added Django 1.5 custom user model support.
+* Fixed response page javascript to submit the correct form when there is more than one.
 
 v0.4
 ----
