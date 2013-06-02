@@ -6,9 +6,9 @@ tip
 ---
 
 * Fixed landing page view to handle redirect URL GET params correctly.
-* Added setting OPENID_SREG_DATA_CALLBACK setting for custom SREG callback
+* Added OPENID_PROVIDER_SREG_DATA_CALLBACK setting for custom SREG callback
   functions.
-* Added AX support, new OPENID_AX_DATA_CALLBACK callback.
+* Added AX support, new OPENID_PROVIDER_AX_DATA_CALLBACK callback.
 * Added Django 1.5 support.
 * Added Django 1.5 custom user model support.
 
