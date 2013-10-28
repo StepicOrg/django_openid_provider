@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # some code from http://www.djangosnippets.org/snippets/310/ by simon
 # and from examples/djopenid from python-openid-2.2.4
-import urlparse
+import urllib.parse
 import logging
-from urllib import urlencode, quote
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -178,9 +177,9 @@ class SafeQueryDict(QueryDict):
     def urlencode(self, safe=None):
         output = []
         if safe:
-            encode = lambda k, v: '%s=%s' % ((quote(k, safe), quote(v, safe)))
+            encode = lambda k, v: '%s=%s' % ((urllib.parse.quote(k, safe), urllib.parse.quote(v, safe)))
         else:
-            encode = lambda k, v: urlencode({k: v})
+            encode = lambda k, v: urllib.parse.urlencode({k: v})
         for k, list_ in self.lists():
             k = smart_str(k, self.encoding)
             output.extend([encode(k, smart_str(v, self.encoding))
@@ -198,12 +197,12 @@ def landing_page(request, orequest, login_url=None,
     if not login_url:
         login_url = settings.LOGIN_URL
     path = request.get_full_path()
-    login_url_parts = list(urlparse.urlparse(login_url))
+    login_url_parts = list(urllib.parse.urlparse(login_url))
     if redirect_field_name:
         querystring = SafeQueryDict(login_url_parts[4], mutable=True)
         querystring[redirect_field_name] = path
         login_url_parts[4] = querystring.urlencode(safe='/')
-    return HttpResponseRedirect(urlparse.urlunparse(login_url_parts))
+    return HttpResponseRedirect(urllib.parse.urlunparse(login_url_parts))
 
 def openid_is_authorized(request, identity_url, trust_root):
     """
