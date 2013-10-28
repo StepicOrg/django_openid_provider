@@ -25,10 +25,10 @@ class OpenID(models.Model):
             from hashlib import sha1
             import random, base64
             sha = sha1()
-            sha.update(unicode(get_username(self.user)).encode('utf-8'))
-            sha.update(str(random.random()))
+            sha.update(get_username(self.user).encode('utf-8'))
+            sha.update(str(random.random()).encode('utf-8'))
             value = str(base64.b64encode(sha.digest()))
-            value = value.replace('/', '').replace('+', '').replace('=', '')
+            value = value.replace('/', '').replace('+', '').replace('=', '').replace('\'', '')
             self.openid = value
         super(OpenID, self).save(*args, **kwargs)
         if self.default:
@@ -39,4 +39,4 @@ class TrustedRoot(models.Model):
     trust_root = models.CharField(max_length=200)
 
     def __unicode__(self):
-        return unicode(self.trust_root)
+        return self.trust_root
