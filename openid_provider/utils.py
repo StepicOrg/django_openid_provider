@@ -20,7 +20,7 @@ def get_username(u):
 def get_default_sreg_data(request, orequest):
     return {
         'email': request.user.email,
-        'nickname': get_username(request.user),
+        'nickname': request.user.get_short_name(),
         'fullname': request.user.get_full_name(),
     }
 
