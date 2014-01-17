@@ -6,7 +6,7 @@ setup(
     version = "0.4.2",
     author = "Roman Barczyński",
     description = "An OpenID provider for your django.contrib.auth accounts",
-    long_description = open("README.txt").read(),
+    long_description = open("README.txt", "rb").read().decode("utf-8"),
     license = "Apache",
     url = "http://www.romke.net/django/openid_provider/",
     download_url = "https://github.com/bioinf/django_openid_provider",
