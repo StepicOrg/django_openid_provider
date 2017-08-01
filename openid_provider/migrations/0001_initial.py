@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('openid', models.CharField(max_length=200, blank=True, unique=True)),
                 ('default', models.BooleanField(default=False)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'OpenIDs',
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('trust_root', models.CharField(max_length=200)),
-                ('openid', models.ForeignKey(to='openid_provider.OpenID')),
+                ('openid', models.ForeignKey(to='openid_provider.OpenID', on_delete=models.CASCADE)),
             ],
         ),
     ]

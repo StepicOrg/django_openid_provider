@@ -8,7 +8,7 @@ from openid_provider.conf import AUTH_USER_MODEL
 from openid_provider.utils import get_username
 
 class OpenID(models.Model):
-    user = models.ForeignKey(AUTH_USER_MODEL)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     openid = models.CharField(max_length=200, blank=True, unique=True)
     default = models.BooleanField(default=False)
 
@@ -35,7 +35,7 @@ class OpenID(models.Model):
             self.user.openid_set.exclude(pk=self.pk).update(default=False)
 
 class TrustedRoot(models.Model):
-    openid = models.ForeignKey(OpenID)
+    openid = models.ForeignKey(OpenID, on_delete=models.CASCADE)
     trust_root = models.CharField(max_length=200)
 
     def __unicode__(self):
