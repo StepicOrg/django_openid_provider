@@ -52,7 +52,7 @@ def openid_server(request):
     if request.session.get('AuthorizationInfo', None):
         del request.session['AuthorizationInfo']
 
-    querydict = dict(request.REQUEST.items())
+    querydict = dict(request.POST.items())
     orequest = server.decodeRequest(querydict)
     if not orequest:
         orequest = request.session.get('OPENID_REQUEST', None)
